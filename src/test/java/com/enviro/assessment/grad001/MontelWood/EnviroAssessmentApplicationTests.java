@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -20,8 +19,9 @@ class EnviroAssessmentApplicationTests {
 
 
 	@Test
+	//I first want to check if the api is up and running.
 	public void testApiendpointStatus() throws Exception{
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/health"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/waste"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 
 	}
