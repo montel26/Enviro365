@@ -1,11 +1,10 @@
 package com.enviro.assessment.grad001.MontelWood.Service;
 
-
 import com.enviro.assessment.grad001.MontelWood.Model.WasteCategoryEntity;
 import com.enviro.assessment.grad001.MontelWood.Repository.WasteCategoryRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,4 +51,5 @@ public class WasteCategoryService {
                 })
                 .orElse(false);
     }
+
 }
