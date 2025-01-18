@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.MontelWood.Controller;
 
+import com.enviro.assessment.grad001.MontelWood.Service.getWasteInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,14 +8,16 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class wasteController {
-    @Autowired
 
+    @Autowired
+    //Inject service class
+    private getWasteInfoService getwasteInfo;
 
     //make them return response entity so we can see status code
     @GetMapping
     public ResponseEntity<String> getWaste(){
 
-        return ResponseEntity.status(HttpStatus.OK).body("You disgust me");
+        return getwasteInfo.execute();
     }
 
     @PostMapping
