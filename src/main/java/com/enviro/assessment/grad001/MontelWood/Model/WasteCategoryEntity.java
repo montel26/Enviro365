@@ -8,7 +8,7 @@ public class WasteCategoryEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
 
-    private long Id;
+    private Long Id;
     private String name;
     private String description;
 
