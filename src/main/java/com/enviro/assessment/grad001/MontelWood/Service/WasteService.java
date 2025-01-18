@@ -12,6 +12,7 @@ import java.util.Optional;
 @Service
 public class WasteService {
 
+    //Simple dependency injection
     @Autowired
     WasteCategoryRepository repository;
 
