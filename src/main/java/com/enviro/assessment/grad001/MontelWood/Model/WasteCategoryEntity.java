@@ -1,16 +1,44 @@
 package com.enviro.assessment.grad001.MontelWood.Model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "Waste-category")
 public class WasteCategoryEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private Long Id;
+    @NotBlank(message = "Category name is required")
+    @Size(min = 2, max = 50, message = "Category name must be between 2 and 50 characters")
     private String name;
+
+    @NotBlank(message ="Discription is required")
+    @Size(min = 2, max = 700, message = "Description must be between 2 and 700 characters")
     private String description;
+
+    private String disposalGuidelines;
+    private String recyclingTips;
+
+    public String getRecyclingTips() {
+        return recyclingTips;
+    }
+
+    public void setRecyclingTips(String recyclingTips) {
+        this.recyclingTips = recyclingTips;
+    }
+
+    public String getDisposalGuidelines() {
+        return disposalGuidelines;
+    }
+
+    public void setDisposalGuidelines(String disposalGuidelines) {
+        this.disposalGuidelines = disposalGuidelines;
+    }
 
     public String getDescription() {
         return description;
@@ -28,11 +56,11 @@ public class WasteCategoryEntity {
         this.name = name;
     }
 
-    public long getId() {
-        return Id;
+    public Long getId() {
+        return id;
     }
 
-    public void setId(long id) {
-        Id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 }

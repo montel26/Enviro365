@@ -5,13 +5,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class RecyclingTipEntity {
+public class WasteDisposalEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Process name is required")
-    private String processName;
+    @NotBlank(message = "Method name is required")
+    private String methodName;
 
     @NotBlank(message = "Description is required")
     private String description;
@@ -21,9 +21,8 @@ public class RecyclingTipEntity {
     @JoinColumn(name = "waste_category_id")
     private WasteCategoryEntity wasteCategory;
 
-    private String processingSteps;
-    private String benefitsDescription;
-    private String resourceSavings;
+    private String safetyPrecautions;
+    private String environmentalImpact;
 
     // Getters and Setters
     public Long getId() {
@@ -34,12 +33,12 @@ public class RecyclingTipEntity {
         this.id = id;
     }
 
-    public String getProcessName() {
-        return processName;
+    public String getMethodName() {
+        return methodName;
     }
 
-    public void setProcessName(String processName) {
-        this.processName = processName;
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
     }
 
     public String getDescription() {
@@ -58,27 +57,19 @@ public class RecyclingTipEntity {
         this.wasteCategory = wasteCategory;
     }
 
-    public String getProcessingSteps() {
-        return processingSteps;
+    public String getSafetyPrecautions() {
+        return safetyPrecautions;
     }
 
-    public void setProcessingSteps(String processingSteps) {
-        this.processingSteps = processingSteps;
+    public void setSafetyPrecautions(String safetyPrecautions) {
+        this.safetyPrecautions = safetyPrecautions;
     }
 
-    public String getBenefitsDescription() {
-        return benefitsDescription;
+    public String getEnvironmentalImpact() {
+        return environmentalImpact;
     }
 
-    public void setBenefitsDescription(String benefitsDescription) {
-        this.benefitsDescription = benefitsDescription;
-    }
-
-    public String getResourceSavings() {
-        return resourceSavings;
-    }
-
-    public void setResourceSavings(String resourceSavings) {
-        this.resourceSavings = resourceSavings;
+    public void setEnvironmentalImpact(String environmentalImpact) {
+        this.environmentalImpact = environmentalImpact;
     }
 }
