@@ -2,6 +2,7 @@ package com.enviro.assessment.grad001.MontelWood.Service;
 
 import com.enviro.assessment.grad001.MontelWood.Model.RecyclingTipEntity;
 import com.enviro.assessment.grad001.MontelWood.Repository.RecyclingTipsRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class RecycleTipService {
     private final RecyclingTipsRepository repository;
 
