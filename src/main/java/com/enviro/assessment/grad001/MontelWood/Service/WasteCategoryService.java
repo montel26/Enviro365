@@ -35,7 +35,7 @@ public class WasteCategoryService {
     public Optional<WasteCategoryEntity> updateCategory(Long id, WasteCategoryEntity updatedCategory) {
         return repository.findById(id)
                 .map(existingCategory -> {
-                    existingCategory.setName(updatedCategory.getName());
+                    existingCategory.setMethodName(updatedCategory.getMethodName());
                     existingCategory.setDescription(updatedCategory.getDescription());
                     existingCategory.setDisposalGuidelines(updatedCategory.getDisposalGuidelines());
                     existingCategory.setRecyclingTips(updatedCategory.getRecyclingTips());

@@ -1,3 +1,4 @@
+
 package com.enviro.assessment.grad001.MontelWood.Controller;
 
 import com.enviro.assessment.grad001.MontelWood.Model.RecyclingTipEntity;
@@ -26,21 +27,13 @@ public class RecyclingTipController {
         this.service = service;
     }
 
-    /**
-     * Retrieve all recycling processes
-     * @return List of all recycling tips
-     */
     @GetMapping
     public ResponseEntity<List<RecyclingTipEntity>> getAllRecyclingProcesses() {
         logger.info("Fetching all recycling processes");
-        return ResponseEntity.ok(service.getAllRecyclingProcesses());
+        List<RecyclingTipEntity> tips = service.getAllRecyclingProcesses();
+        return ResponseEntity.ok(tips);
     }
 
-    /**
-     * Retrieve a specific recycling tip by ID
-     * @param id The ID of the recycling tip
-     * @return The recycling tip if found, or 404 if not found
-     */
     @GetMapping("/{id}")
     public ResponseEntity<RecyclingTipEntity> getRecyclingById(@PathVariable Long id) {
         logger.info("Fetching recycling tip with id: {}", id);
@@ -49,11 +42,6 @@ public class RecyclingTipController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    /**
-     * Get recycling processes by category
-     * @param categoryId The ID of the category
-     * @return List of recycling processes for the specified category
-     */
     @GetMapping("/category/{categoryId}")
     public ResponseEntity<List<RecyclingTipEntity>> getRecyclingProcessesByCategory(@PathVariable Long categoryId) {
         logger.info("Fetching recycling processes for category: {}", categoryId);
@@ -61,14 +49,8 @@ public class RecyclingTipController {
         return ResponseEntity.ok(processes);
     }
 
-    /**
-     * Create a new recycling process
-     * @param recycling The recycling tip details to create
-     * @return The created recycling tip with location header
-     */
     @PostMapping
-    public ResponseEntity<RecyclingTipEntity> createRecyclingProcess(
-            @Valid @RequestBody RecyclingTipEntity recycling) {
+    public ResponseEntity<RecyclingTipEntity> createRecyclingProcess(@Valid @RequestBody RecyclingTipEntity recycling) {
         logger.info("Creating new recycling process");
         RecyclingTipEntity created = service.createRecyclingProcess(recycling);
         URI location = ServletUriComponentsBuilder
@@ -79,12 +61,6 @@ public class RecyclingTipController {
         return ResponseEntity.created(location).body(created);
     }
 
-    /**
-     * Update an existing recycling process
-     * @param id The ID of the recycling tip to update
-     * @param recycling The updated recycling tip details
-     * @return The updated recycling tip, or 404 if not found
-     */
     @PutMapping("/{id}")
     public ResponseEntity<RecyclingTipEntity> updateRecyclingProcess(
             @PathVariable Long id,
@@ -95,11 +71,6 @@ public class RecyclingTipController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    /**
-     * Delete a recycling process
-     * @param id The ID of the recycling tip to delete
-     * @return 204 if deleted, 404 if not found
-     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRecyclingProcess(@PathVariable Long id) {
         logger.info("Deleting recycling process with id: {}", id);

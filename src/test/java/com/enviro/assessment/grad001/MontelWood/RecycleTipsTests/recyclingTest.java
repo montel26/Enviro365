@@ -17,7 +17,7 @@ class recyclingTest {
     void testValidRecycling() {
         WasteCategoryEntity category = new WasteCategoryEntity();
         category.setId(1L);
-        category.setName("Paper");
+        category.setMethodName("Paper");
 
         RecyclingTipEntity recycling = new RecyclingTipEntity();
         recycling.setProcessName("Pulping");

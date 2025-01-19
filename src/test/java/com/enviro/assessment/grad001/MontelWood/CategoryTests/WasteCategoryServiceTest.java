@@ -32,7 +32,7 @@ class WasteCategoryServiceTest {
     void setUp() {
         testCategory = new WasteCategoryEntity();
         testCategory.setId(1L);
-        testCategory.setName("Glass");
+        testCategory.setMethodName("Glass");
         testCategory.setDescription("Glass waste");
     }
 
@@ -81,7 +81,7 @@ class WasteCategoryServiceTest {
     @Test
     void updateCategory_WhenExists_ShouldUpdateAndReturnCategory() {
         WasteCategoryEntity updatedCategory = new WasteCategoryEntity();
-        updatedCategory.setName("Updated Glass");
+        updatedCategory.setMethodName("Updated Glass");
         updatedCategory.setDescription("Updated description");
 
         when(repository.findById(1L)).thenReturn(Optional.of(testCategory));

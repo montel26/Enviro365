@@ -1,13 +1,11 @@
 package com.enviro.assessment.grad001.MontelWood.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
+@Table(name = "waste_category")  // Explicitly specify table name
 public class WasteCategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,29 +13,41 @@ public class WasteCategoryEntity {
 
     @NotBlank(message = "Category name is required")
     @Size(min = 2, max = 50, message = "Category name must be between 2 and 50 characters")
+    @Column(nullable = false)  // Ensure column is not nullable
     private String name;
 
-    @NotBlank(message ="Discription is required")
+    @NotBlank(message = "Description is required")
     @Size(min = 2, max = 700, message = "Description must be between 2 and 700 characters")
+    @Column(nullable = false)  // Ensure column is not nullable
     private String description;
 
+    @Column(name = "disposal_guidelines")  // Explicitly specify column name
     private String disposalGuidelines;
+
+    @Column(name = "recycling_tips")  // Explicitly specify column name
     private String recyclingTips;
 
-    public String getRecyclingTips() {
-        return recyclingTips;
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+    public String getName() {  // Correct method name
+        return name;
     }
 
-    public void setRecyclingTips(String recyclingTips) {
-        this.recyclingTips = recyclingTips;
+    public void setName(String name) {  // Correct method name
+        this.name = name;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getDisposalGuidelines() {
-        return disposalGuidelines;
+    public String getMethodName() {  // Fixed method name to match field
+        return name;
     }
 
-    public void setDisposalGuidelines(String disposalGuidelines) {
-        this.disposalGuidelines = disposalGuidelines;
+    public void setMethodName(String name) {  // Fixed method name to match field
+        this.name = name;
     }
 
     public String getDescription() {
@@ -48,19 +58,20 @@ public class WasteCategoryEntity {
         this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public String getDisposalGuidelines() {
+        return disposalGuidelines;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDisposalGuidelines(String disposalGuidelines) {
+        this.disposalGuidelines = disposalGuidelines;
     }
 
-    public Long getId() {
-        return id;
+    public String getRecyclingTips() {
+        return recyclingTips;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRecyclingTips(String recyclingTips) {
+        this.recyclingTips = recyclingTips;
     }
+
 }

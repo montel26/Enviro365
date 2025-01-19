@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.MontelWood.Controller;
 
+
 import com.enviro.assessment.grad001.MontelWood.Model.WasteDisposalEntity;
 import com.enviro.assessment.grad001.MontelWood.Service.WasteDisposalService;
 import jakarta.validation.Valid;
@@ -26,21 +27,13 @@ public class WasteDisposalController {
         this.service = service;
     }
 
-    /**
-     * Retrieve all disposal methods
-     * @return List of all disposal methods
-     */
     @GetMapping
     public ResponseEntity<List<WasteDisposalEntity>> getAllDisposalMethods() {
         logger.info("Fetching all disposal methods");
-        return ResponseEntity.ok(service.getAllDisposalMethods());
+        List<WasteDisposalEntity> methods = service.getAllDisposalMethods();
+        return ResponseEntity.ok(methods);
     }
 
-    /**
-     * Retrieve a specific disposal method by ID
-     * @param id The ID of the disposal method
-     * @return The disposal method if found, or 404 if not found
-     */
     @GetMapping("/{id}")
     public ResponseEntity<WasteDisposalEntity> getDisposalById(@PathVariable Long id) {
         logger.info("Fetching disposal method with id: {}", id);
@@ -49,11 +42,6 @@ public class WasteDisposalController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    /**
-     * Get disposal methods by category
-     * @param categoryId The ID of the category
-     * @return List of disposal methods for the specified category
-     */
     @GetMapping("/category/{categoryId}")
     public ResponseEntity<List<WasteDisposalEntity>> getDisposalMethodsByCategory(@PathVariable Long categoryId) {
         logger.info("Fetching disposal methods for category: {}", categoryId);
@@ -61,14 +49,8 @@ public class WasteDisposalController {
         return ResponseEntity.ok(methods);
     }
 
-    /**
-     * Create a new disposal method
-     * @param disposal The disposal method details to create
-     * @return The created disposal method with location header
-     */
     @PostMapping
-    public ResponseEntity<WasteDisposalEntity> createDisposalMethod(
-            @Valid @RequestBody WasteDisposalEntity disposal) {
+    public ResponseEntity<WasteDisposalEntity> createDisposalMethod(@Valid @RequestBody WasteDisposalEntity disposal) {
         logger.info("Creating new disposal method");
         WasteDisposalEntity created = service.createDisposalMethod(disposal);
         URI location = ServletUriComponentsBuilder
@@ -79,12 +61,6 @@ public class WasteDisposalController {
         return ResponseEntity.created(location).body(created);
     }
 
-    /**
-     * Update an existing disposal method
-     * @param id The ID of the disposal method to update
-     * @param disposal The updated disposal method details
-     * @return The updated disposal method, or 404 if not found
-     */
     @PutMapping("/{id}")
     public ResponseEntity<WasteDisposalEntity> updateDisposalMethod(
             @PathVariable Long id,
@@ -95,11 +71,6 @@ public class WasteDisposalController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    /**
-     * Delete a disposal method
-     * @param id The ID of the disposal method to delete
-     * @return 204 if deleted, 404 if not found
-     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDisposalMethod(@PathVariable Long id) {
         logger.info("Deleting disposal method with id: {}", id);
