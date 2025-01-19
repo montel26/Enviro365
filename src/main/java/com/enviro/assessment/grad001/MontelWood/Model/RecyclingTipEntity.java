@@ -4,81 +4,91 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-@Entity
-public class RecyclingTipEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @NotBlank(message = "Process name is required")
-    private String processName;
+    @Entity
+    @Table(name = "recycling_tip")  // Explicitly specify table name
+    public class RecyclingTipEntity {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-    @NotBlank(message = "Description is required")
-    private String description;
+        @NotBlank(message = "Process name is required")
+        @Column(name = "process_name", nullable = false)  // Explicitly specify column name
+        private String processName;
 
-    @NotNull(message = "WasteCategory is required")
-    @ManyToOne
-    @JoinColumn(name = "waste_category_id")
-    private WasteCategoryEntity wasteCategory;
+        @NotBlank(message = "Description is required")
+        @Column(nullable = false)  // Ensure column is not nullable
+        private String description;
 
-    private String processingSteps;
-    private String benefitsDescription;
-    private String resourceSavings;
+        @NotNull(message = "WasteCategory is required")
+        @ManyToOne(fetch = FetchType.LAZY)  // Added fetch type for better performance
+        @JoinColumn(name = "waste_category_id", nullable = false)  // Ensure foreign key is not nullable
+        private WasteCategoryEntity wasteCategory;
 
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
+        @Column(name = "processing_steps")  // Explicitly specify column name
+        private String processingSteps;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+        @Column(name = "benefits_description")  // Explicitly specify column name
+        private String benefitsDescription;
 
-    public String getProcessName() {
-        return processName;
-    }
+        @Column(name = "resource_savings")  // Explicitly specify column name
+        private String resourceSavings;
 
-    public void setProcessName(String processName) {
-        this.processName = processName;
-    }
+        // Getters and Setters
+        public Long getId() {
+            return id;
+        }
 
-    public String getDescription() {
-        return description;
-    }
+        public void setId(Long id) {
+            this.id = id;
+        }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+        public String getProcessName() {
+            return processName;
+        }
 
-    public WasteCategoryEntity getWasteCategory() {
-        return wasteCategory;
-    }
+        public void setProcessName(String processName) {
+            this.processName = processName;
+        }
 
-    public void setWasteCategory(WasteCategoryEntity wasteCategory) {
-        this.wasteCategory = wasteCategory;
-    }
+        public String getDescription() {
+            return description;
+        }
 
-    public String getProcessingSteps() {
-        return processingSteps;
-    }
+        public void setDescription(String description) {
+            this.description = description;
+        }
 
-    public void setProcessingSteps(String processingSteps) {
-        this.processingSteps = processingSteps;
-    }
+        public WasteCategoryEntity getWasteCategory() {
+            return wasteCategory;
+        }
 
-    public String getBenefitsDescription() {
-        return benefitsDescription;
-    }
+        public void setWasteCategory(WasteCategoryEntity wasteCategory) {
+            this.wasteCategory = wasteCategory;
+        }
 
-    public void setBenefitsDescription(String benefitsDescription) {
-        this.benefitsDescription = benefitsDescription;
-    }
+        public String getProcessingSteps() {
+            return processingSteps;
+        }
 
-    public String getResourceSavings() {
-        return resourceSavings;
-    }
+        public void setProcessingSteps(String processingSteps) {
+            this.processingSteps = processingSteps;
+        }
 
-    public void setResourceSavings(String resourceSavings) {
-        this.resourceSavings = resourceSavings;
-    }
+        public String getBenefitsDescription() {
+            return benefitsDescription;
+        }
+
+        public void setBenefitsDescription(String benefitsDescription) {
+            this.benefitsDescription = benefitsDescription;
+        }
+
+        public String getResourceSavings() {
+            return resourceSavings;
+        }
+
+        public void setResourceSavings(String resourceSavings) {
+            this.resourceSavings = resourceSavings;
+        }
+
 }

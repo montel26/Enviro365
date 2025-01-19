@@ -15,7 +15,7 @@ public class WasteCategoryTest {
     @Test
     void testValidWasteCategory() {
         WasteCategoryEntity category = new WasteCategoryEntity();
-        category.setName("Plastic");
+        category.setMethodName("Plastic");
         category.setDescription("All plastic materials");
         category.setDisposalGuidelines("Clean and dry before disposal");
         category.setRecyclingTips("Remove caps and labels");
@@ -27,7 +27,7 @@ public class WasteCategoryTest {
     @Test
     void testInvalidNameTooShort() {
         WasteCategoryEntity category = new WasteCategoryEntity();
-        category.setName("A"); // Too short
+        category.setMethodName("A"); // Too short
         category.setDescription("All plastic materials");
 
         var violations = validator.validate(category);
@@ -38,7 +38,7 @@ public class WasteCategoryTest {
     @Test
     void testBlankDescription() {
         WasteCategoryEntity category = new WasteCategoryEntity();
-        category.setName("Plastic");
+        category.setMethodName("Plastic");
         category.setDescription(""); // Blank description
 
         var violations = validator.validate(category);
@@ -51,13 +51,13 @@ public class WasteCategoryTest {
         WasteCategoryEntity category = new WasteCategoryEntity();
 
         category.setId(1L);
-        category.setName("Paper");
+        category.setMethodName("Paper");
         category.setDescription("Paper waste");
         category.setDisposalGuidelines("Fold and bundle");
         category.setRecyclingTips("Remove staples");
 
         assertEquals(1L, category.getId());
-        assertEquals("Paper", category.getName());
+        assertEquals("Paper", category.getMethodName());
         assertEquals("Paper waste", category.getDescription());
         assertEquals("Fold and bundle", category.getDisposalGuidelines());
         assertEquals("Remove staples", category.getRecyclingTips());

@@ -35,7 +35,7 @@ class DisposalServiceTest {
     void setUp() {
         testCategory = new WasteCategoryEntity();
         testCategory.setId(1L);
-        testCategory.setName("Electronics");
+        testCategory.setMethodName("Electronics");
 
         testDisposal = new WasteDisposalEntity();
         testDisposal.setId(1L);

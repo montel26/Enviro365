@@ -17,7 +17,7 @@ class DisposalTest {
     void testValidDisposal() {
         WasteCategoryEntity category = new WasteCategoryEntity();
         category.setId(1L);
-        category.setName("Plastics");
+        category.setMethodName("Plastics");
 
         WasteDisposalEntity disposal = new WasteDisposalEntity();
         disposal.setMethodName("Compacting");
@@ -49,7 +49,7 @@ class DisposalTest {
         disposal.setId(1L);
         disposal.setMethodName("Incineration");
         disposal.setDescription("Controlled burning");
-        disposal.setWasteCategory(category);
+        disposal.setWasteCategory(category);;
         disposal.setSafetyPrecautions("Use protective gear");
         disposal.setEnvironmentalImpact("Emissions controlled");
 

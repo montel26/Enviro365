@@ -34,7 +34,7 @@ class RecyclingServiceTest {
     void setUp() {
         testCategory = new WasteCategoryEntity();
         testCategory.setId(1L);
-        testCategory.setName("Plastics");
+        testCategory.setMethodName("Plastics");
 
         testRecycling = new RecyclingTipEntity();
         testRecycling.setId(1L);

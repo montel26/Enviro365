@@ -5,16 +5,20 @@ import com.enviro.assessment.grad001.MontelWood.Service.WasteCategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/waste-categories")
+@Validated
 public class WasteCategoryController {
-
+    private static final Logger logger = LoggerFactory.getLogger(WasteCategoryController.class);
     private final WasteCategoryService service;
 
     @Autowired
@@ -24,11 +28,14 @@ public class WasteCategoryController {
 
     @GetMapping
     public ResponseEntity<List<WasteCategoryEntity>> getAllCategories() {
-        return ResponseEntity.ok(service.getAllCategories());
+        logger.info("Fetching all waste categories");
+        List<WasteCategoryEntity> categories = service.getAllCategories();
+        return ResponseEntity.ok(categories);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<WasteCategoryEntity> getCategoryById(@PathVariable Long id) {
+        logger.info("Fetching waste category with ID: {}", id);
         return service.getCategoryById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -36,6 +43,7 @@ public class WasteCategoryController {
 
     @PostMapping
     public ResponseEntity<WasteCategoryEntity> createCategory(@Valid @RequestBody WasteCategoryEntity category) {
+        logger.info("Creating new waste category");
         WasteCategoryEntity created = service.createCategory(category);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -49,6 +57,7 @@ public class WasteCategoryController {
     public ResponseEntity<WasteCategoryEntity> updateCategory(
             @PathVariable Long id,
             @Valid @RequestBody WasteCategoryEntity category) {
+        logger.info("Updating waste category with ID: {}", id);
         return service.updateCategory(id, category)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -56,8 +65,10 @@ public class WasteCategoryController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
-        return service.deleteCategory(id)
-                ? ResponseEntity.noContent().build()
-                : ResponseEntity.notFound().build();
+        logger.info("Deleting waste category with ID: {}", id);
+        if (service.deleteCategory(id)) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
