@@ -1,3 +1,6 @@
+
+
+
 -- Insert Waste Categories
 INSERT INTO waste_category (name, description, disposal_guidelines, recycling_tips) VALUES
     ('Plastic', 'All types of plastic materials including bottles, containers, and packaging','Rinse plastic containers to remove food residue or liquids. Do not recycle plastic items like cling wrap, polystyrene foam, or contaminated plastic bags unless explicitly accepted by your local facility.','Use plastic containers for storage, crafts, or repurposing before recycling.'),
