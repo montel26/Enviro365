@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service class handling business logic for waste disposal methods.
+ * Provides CRUD operations and additional business logic for managing disposal guidelines.
+ */
+
 @Service
 @Transactional
 public class WasteDisposalService {

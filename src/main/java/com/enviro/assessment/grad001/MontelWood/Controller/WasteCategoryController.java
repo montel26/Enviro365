@@ -14,6 +14,12 @@ import org.slf4j.LoggerFactory;
 import java.net.URI;
 import java.util.List;
 
+/**
+ * REST controller for managing waste categories.
+ * Provides endpoints for CRUD operations on waste categories.
+ * Base path: /api/waste-categories
+ */
+
 @RestController
 @RequestMapping("/api/waste-categories")
 @Validated

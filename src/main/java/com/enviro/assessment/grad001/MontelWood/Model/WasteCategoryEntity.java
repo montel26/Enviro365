@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+/**
+ * Entity class representing different categories of waste materials.
+ * This class stores information about waste types, their descriptions,
+ * and related guidelines for disposal and recycling.
+ */
+
 @Entity
 @Table(name = "waste_category")
 public class WasteCategoryEntity {
