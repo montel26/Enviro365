@@ -79,3 +79,4 @@ public class RecyclingTipController {
                 : ResponseEntity.notFound().build();
     }
 }
+
