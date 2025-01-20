@@ -15,6 +15,12 @@ import org.slf4j.LoggerFactory;
 import java.net.URI;
 import java.util.List;
 
+/**
+ * REST controller for managing waste disposal methods.
+ * Provides endpoints for CRUD operations on disposal methods.
+ * Base path: /api/waste-disposal
+ */
+
 @RestController
 @RequestMapping("/api/waste-disposal")
 @Validated

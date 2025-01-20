@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+/**
+ * Entity class representing waste disposal methods.
+ * This class maintains information about different ways to dispose of waste,
+ * including environmental impacts and safety considerations.
+ */
+
 @Entity
 public class WasteDisposalEntity {
     @Id

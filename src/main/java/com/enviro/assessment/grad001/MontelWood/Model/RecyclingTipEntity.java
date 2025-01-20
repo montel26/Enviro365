@@ -4,11 +4,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+/**
+ * Entity class representing recycling tips and processes.
+ * This class stores detailed information about recycling procedures,
+ * their benefits, and resource conservation aspects.
+ */
 
 @Entity
 @Table(name = "recycling_tip")
-/** Explicitly specify table name
- * Creaction of the recycling entity. */
+
 public class RecyclingTipEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

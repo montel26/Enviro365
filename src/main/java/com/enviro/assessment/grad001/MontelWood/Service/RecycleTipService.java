@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service class handling business logic for recycling processes and tips.
+ * Provides CRUD operations and additional business logic for managing recycling information.
+ */
+
 @Service
 @Transactional
 public class RecycleTipService {

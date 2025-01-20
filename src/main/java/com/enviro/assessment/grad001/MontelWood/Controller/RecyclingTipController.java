@@ -15,6 +15,13 @@ import org.slf4j.LoggerFactory;
 import java.net.URI;
 import java.util.List;
 
+
+/**
+ * REST controller for managing recycling tips and processes.
+ * Provides endpoints for CRUD operations on recycling information.
+ * Base path: /api/recycling-tips
+ */
+
 @RestController
 @RequestMapping("/api/recycling-tips")
 @Validated
