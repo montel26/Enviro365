@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * REST controller for managing recycling tips and processes.
- * Provides endpoints for CRUD operations on recycling information.
+ * Provides endpoints for CRUD operations on recycling information .
  * Base path: /api/recycling-tips
  */
 
