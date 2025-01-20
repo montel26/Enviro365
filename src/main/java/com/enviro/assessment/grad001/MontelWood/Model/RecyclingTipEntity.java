@@ -6,32 +6,34 @@ import jakarta.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "recycling_tip")  // Explicitly specify table name
+@Table(name = "recycling_tip")
+/** Explicitly specify table name
+ * Creaction of the recycling entity. */
 public class RecyclingTipEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "Process name is required")
-    @Column(name = "process_name", nullable = false)  // Explicitly specify column name
+    @Column(name = "process_name", nullable = false)
     private String processName;
 
     @NotBlank(message = "Description is required")
-    @Column(nullable = false)  // Ensure column is not nullable
+    @Column(nullable = false)
     private String description;
 
     @NotNull(message = "WasteCategory is required")
-    @ManyToOne()  // Added fetch type for better performance
-    @JoinColumn(name = "waste_category_id", nullable = false)  // Ensure foreign key is not nullable
+    @ManyToOne()
+    @JoinColumn(name = "waste_category_id", nullable = false)
     private WasteCategoryEntity wasteCategory;
 
-    @Column(name = "processing_steps")  // Explicitly specify column name
+    @Column(name = "processing_steps")
     private String processingSteps;
 
-    @Column(name = "benefits_description")  // Explicitly specify column name
+    @Column(name = "benefits_description")
     private String benefitsDescription;
 
-    @Column(name = "resource_savings")  // Explicitly specify column name
+    @Column(name = "resource_savings")
     private String resourceSavings;
 
     // Getters and Setters

@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "waste_category")  // Explicitly specify table name
+@Table(name = "waste_category")
 public class WasteCategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,18 +13,18 @@ public class WasteCategoryEntity {
 
     @NotBlank(message = "Category name is required")
     @Size(min = 2, max = 50, message = "Category name must be between 2 and 50 characters")
-    @Column(nullable = false)  // Ensure column is not nullable
+    @Column(nullable = false)
     private String name;
 
     @NotBlank(message = "Description is required")
     @Size(min = 2, max = 700, message = "Description must be between 2 and 700 characters")
-    @Column(nullable = false)  // Ensure column is not nullable
+    @Column(nullable = false)
     private String description;
 
-    @Column(name = "disposal_guidelines")  // Explicitly specify column name
+    @Column(name = "disposal_guidelines")
     private String disposalGuidelines;
 
-    @Column(name = "recycling_tips")  // Explicitly specify column name
+    @Column(name = "recycling_tips")
     private String recyclingTips;
 
     // Getters and Setters
